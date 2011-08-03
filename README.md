@@ -2,6 +2,8 @@
 
 WunderAPI is a tool for defining, documenting, and testing an API by simply writing example API calls in a markdown document. It is currently intended only for testing APIs that return JSON, and are described in a Markdown file.
 
+In essence, you write a couple examples in your doc/spec and - *BAM* - wunderapi turns those into executable tests.
+
 ## Usage
 
     wunderapi [API root URI] [testfile1] [testfile2] ...
@@ -31,7 +33,7 @@ Executing it like this:
 
 Would give the output:
 
-    Listing tasks
+    GET /tasks/
     ✓ 200 OK
     ✓ content-type: application/json
     ✓ []
