@@ -55,6 +55,7 @@ router.get(/\/tasks\/(\w+)/).bind(function (req, res, id) {
     else res.send(404, {}, { error: 'Could not find task "' + id + '"'})
 })
 router.post('/tasks/').bind(function (req, res, task) {
+    if (!task.name) return res.send(422, {}, { message: "Task must contain a name" })
     res.send(201, {}, tasks.insert(task))
 })
 router.put(/\/tasks\/(\w+)/).bind(function (req, res, id, task) {
