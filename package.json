@@ -4,7 +4,9 @@
 , "dirs": [ "lib", "test" ]
 , "files": [ "LICENSE", "README.md", "package.json" ]
 , "bin": "./bin/wunderapi"
-, "test": "node test/test.js"
+, "scripts":
+  { "test": "node test/test.js"
+  }
 , "dependencies":
   { "vows": "~0.5"
   , "request": "~2.0"
