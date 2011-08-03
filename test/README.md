@@ -81,9 +81,7 @@ This cannot be allowed, so the system returns an error:
     200 OK
     Content-Type: application/json
 
-    [
-    { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true }
-    ]
+    [ { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true } ]
 
 ## Delete a task
 
