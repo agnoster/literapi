@@ -3,4 +3,14 @@
 , "main": "./lib/index.js"
 , "dirs": [ "lib", "test" ]
 , "files": [ "LICENSE", "README.md", "package.json" ]
+, "bin": "./bin/wunderapi"
+, "test": "node test/test.js"
+, "dependencies":
+  { "vows": "~0.5"
+  , "request": "~2.0"
+  , "marked": "0.0.1"
+  }
+, "devDependencies":
+  { "journey": "0.4.0-pre-2"
+  }
 }
