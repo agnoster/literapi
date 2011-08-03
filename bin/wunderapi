@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var wunderapi = require('wunderapi')
+
+wunderapi.setRoot(process.argv[2])
+
+for (var i = 3; i < process.argv.length; i++) {
+    wunderapi.runFile(process.argv[i], function(err, vows) {
+        if (err) throw(err)
+
+        vows.reporter = require('vows/lib/vows/reporters/spec')
+        vows.run()
+    })
+}
