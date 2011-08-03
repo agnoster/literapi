@@ -1,0 +1,6 @@
+{ "name": "wunderapi"
+, "version": "0.0.1"
+, "main": "./lib/index.js"
+, "dirs": [ "lib", "test" ]
+, "files": [ "LICENSE", "README.md", "package.json" ]
+}
