@@ -29,7 +29,7 @@ The response will return the newly-created task, with the default parameter `don
     201 Created
     Content-Type: application/json
 
-    { "id": 1, "name": "Take out the garbage", "done": false }
+    { "id": [ITEM_ID], "name": "Take out the garbage", "done": false }
 
 ### Tasks require a name
 
@@ -49,28 +49,28 @@ This cannot be allowed, so the system returns an error:
 
 ## Retrieve a previously created task
 
-    GET /tasks/1
+    GET /tasks/[ITEM_ID]
 
 ### Response
 
     200 OK
     Content-Type: application/json
 
-    { "id": 1, "name": "Take out the garbage", "done": false }
+    { "id": [ITEM_ID], "name": "Take out the garbage", "done": false }
 
 ## Update a task
 
-    PUT /tasks/1
+    PUT /tasks/[ITEM_ID]
     Content-Type: application/json
 
-    { "id": 1, "name": "Take out the garbage today", "done": true }
+    { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true }
 
 ### Response
 
     200 OK
     Content-Type: application/json
 
-    { "id": 1, "name": "Take out the garbage today", "done": true }
+    { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true }
 
 ## List updated tasks
 
@@ -82,12 +82,12 @@ This cannot be allowed, so the system returns an error:
     Content-Type: application/json
 
     [
-    { "id": 1, "name": "Take out the garbage today", "done": true }
+    { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true }
     ]
 
 ## Delete a task
 
-    DELETE /tasks/1
+    DELETE /tasks/[ITEM_ID]
 
 ### Response
 
@@ -95,14 +95,14 @@ This cannot be allowed, so the system returns an error:
 
 ## Try to get a nonexistent task
 
-    GET /tasks/1
+    GET /tasks/[ITEM_ID]
 
 ### Response
 
     404 Not Found
     Content-Type: application/json
 
-    { "error": "Could not find task \"1\"" }
+    { "error": "Could not find task \"[ITEM_ID]\"" }
 
 ## Empty list after deletion
 
