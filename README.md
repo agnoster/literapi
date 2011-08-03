@@ -21,6 +21,7 @@ If you had the file `example.md`:
     ### Response
 
         200 OK
+        Content-Type: application/json
 
         []
 
@@ -32,8 +33,10 @@ Would give the output:
 
     Listing tasks
     ✓ 200 OK
+    ✓ content-type: application/json
+    ✓ []
     
-    ✓ OK » 1 honored (0.112s)
+    ✓ OK » 3 honored (0.112s)
 
 ## Format
 
