@@ -16,11 +16,9 @@ If you had the file `example.md`:
 
     ## Listing tasks
 
-    ### Request
-
         GET /tasks/
 
-    ### Response
+    Returns an empty list:
 
         200 OK
         Content-Type: application/json
