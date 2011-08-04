@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
-var wunderapi = require('wunderapi')
+var WunderAPI = require('wunderapi')
 
 if (process.argv[2] == '-v') {
-    console.log(wunderapi.getVersion())
+    console.log(WunderAPI.getVersion())
     process.exit();
 }
 
-wunderapi.setRoot(process.argv[2])
-
 for (var i = 3; i < process.argv.length; i++) {
-    wunderapi.runFile(process.argv[i], function(err, vows) {
+    var api = new WunderAPI(process.argv[2])
+    api.compileFile(process.argv[i], function(err, vows) {
         if (err) throw(err)
 
         vows.reporter = require('vows/lib/vows/reporters/spec')

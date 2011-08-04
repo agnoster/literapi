@@ -1,11 +1,16 @@
 var server = require('./server')
-  , wunderapi = require('../lib')
+  , WunderAPI = require('../lib')
 
 var port = 74123
-wunderapi.setRoot("http://localhost:" + port)
+
+var api = new WunderAPI(
+  { root: "http://localhost:" + port
+  , compiler: "vows"
+  , parser: "markdown"
+  })
 
 server.listen(port)
-wunderapi.runFile('test/README.md', function(err, vows) {
+api.compileFile('test/README.md', function(err, vows) {
     if (err) throw(err)
 
     vows.reporter = require('vows/lib/vows/reporters/spec')
