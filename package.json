@@ -1,9 +1,18 @@
 { "name": "wunderapi"
-, "version": "0.0.1"
+, "version": "0.0.2"
+, "description": "Test your APIs with stories written in Markdown"
+, "keywords": ["testing", "api"]
+, "homepage": "https://github.com/6wunderkinder/wunderapi"
+, "author": "Isaac Wolkerstorfer <isaac@6wunderkinder.com>"
 , "main": "./lib/index.js"
+, "repository": 
+  { "type": "git"
+  , "url": "git://github.com/6wunderkinder/wunderapi.git"
+  }
 , "dirs": [ "lib", "test" ]
-, "files": [ "LICENSE", "README.md", "package.json" ]
+, "files": [ "LICENSE", "CHANGELOG.md", "README.md", "package.json" ]
 , "bin": "./bin/wunderapi"
+, "preferGlobal": true
 , "scripts":
   { "test": "node test/test.js"
   }
