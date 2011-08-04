@@ -1,5 +1,5 @@
 var server = require('./server')
-  , wunderapi = require('wunderapi')
+  , wunderapi = require('../lib')
 
 var port = 74123
 wunderapi.setRoot("http://localhost:" + port)
