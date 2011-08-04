@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.5
+
+* Major refactor to allow concurrent test runs (previously all runs would share a variable space)
+* Added `-v` flag to get version number
+
 ## 0.0.4
 
 * Requests and responses can now be interleaved without explicitly ending the blocks
