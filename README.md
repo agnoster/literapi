@@ -68,6 +68,80 @@ Acceptance criteria:
   * Any header defined *must* appear in the response, but additional headers *may* be returned. The order is free.
   * The data returned will be JSON-decoded and compared with the expected response. The objects must be identical. If no expected response data is given, the response body must be blank.
 
+## Advanced Format
+
+Sometimes, literally matching the response just isn't powerful enough. For this reason, there are some extra tools that WunderAPI gives you.
+
+### Variables
+
+Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TOKEN]`) is considered a *variable*. Since WunderAPI is declarative, all instances of a variable must match. Here's an example:
+
+    We post a new status update:
+
+        POST /status/
+
+        { "text": "Hello World" }
+
+    It gets a new ID assigned by the server:
+
+        201 Created
+
+        { "id": [STATUS_ID], "text": "Hello World" }
+
+    Then, when we ask for the status by id
+
+        GET /status/[STATUS_ID]
+
+    We get it back:
+
+        200 OK
+
+        { "id": [STATUS_ID], "text": "Hello World" }
+
+In this example, the `[STATUS_ID]` will get set in the first server response, by simply matching whatever it sees there. This could be an integer, a string, or even an array or an object. From that moment on, the variable is *bound* - it cannot change for any reason. Thus, in the second test, if the `id` field of the response did not match what we got on creation, an error would be found.
+
+Variables may also be captured and inserted into headers:
+
+    We sign in:
+
+        POST /login
+
+        { "email": "foobar@example.com", "password": "Fsy58qffAFt3498" }
+
+    And get back an authentication token
+
+        200 OK
+        X-Auth-Token: [AUTH]
+
+    Which we can pass back to the server
+
+        GET /secret/resource
+        X-Auth-Token: [AUTH]
+
+    to get access to privileged content
+
+        200 OK
+
+        { "privacy": "top_secret", ... }
+
+This last response brings us to our next topic: globs
+
+### Globs
+
+WunderAPI supports two kinds of globs: `*`, which matches any JSON value, and `...`, which matches any set of key-value pairs.
+
+The `*` glob is useful if you care that a value is there, but not what it is. It can be thought of as a variable that does not capture any value. For example, you might write:
+
+    GET /status/1
+
+    200 OK
+
+    { "id": 1, "text": "This entry was inserted previously", "created_at": * }
+
+In this instance, the response value would be required to have an `id` of 1, a `text` of "This entry was inserted previously", and a `created_at` field - however, the `created_at` field could be any value at all: a string, a number, a boolean, even an array or an object. If any of those fields were missing, we would get an error - but we would *also* get an error if any fields were returned that were not shown here.
+
+The `...` glob is useful for just the case where we want to ensure certain fields are set, but there may be other fields we don't care to enumerate. Caution should, however, be exercised - part of the value of WunderAPI specs is that a reader can have a good impression of the full extent of the API, and thus, even if the testing of particular fields is not necessary, being strict will both ensure greater understandability of the markdown *and* additional protection from unforseen consequences if the API changes in any way.
+
 ## Contributing
 
 WunderAPI is licensed under an MIT License. Contributions and bug reports are welcome, please use Github for those purposes.
