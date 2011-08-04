@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.4
+
+* Requests and responses can now be interleaved without explicitly ending the blocks
+* Fixed bug where using the root path (like "GET /") wouldn't work
+* Capture an error for non-JSON data
+* Fixed bug where missing fields would not cause failure
+* Changed glob syntax:
+    * `*` is for matching any value
+    * `...` is for matching any additional keys in an object
+* Expected responses that do not parse as JSON are checked for literal string match with the actual response
+
 ## 0.0.3
 
 * Added capture pattern '...', matches anything
