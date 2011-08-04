@@ -2,6 +2,11 @@
 
 var wunderapi = require('wunderapi')
 
+if (process.argv[2] == '-v') {
+    console.log(wunderapi.getVersion())
+    process.exit();
+}
+
 wunderapi.setRoot(process.argv[2])
 
 for (var i = 3; i < process.argv.length; i++) {
