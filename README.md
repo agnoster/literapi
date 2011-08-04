@@ -2,7 +2,13 @@
 
 WunderAPI is a tool for defining, documenting, and testing an API by simply writing example API calls in a markdown document. It is currently intended only for testing APIs that return JSON, and are described in a Markdown file.
 
-In essence, you write a couple examples in your doc/spec and - *BAM* - wunderapi turns those into executable tests.
+In essence, you write a couple examples in your doc/spec and - *BAM* - WunderAPI turns those into executable tests.
+
+## Installation
+
+    npm install -g wunderapi
+
+(If you don't have [npm], you really should.)
 
 ## Usage
 
@@ -37,6 +43,14 @@ Would give the output:
     ✓ []
     
     ✓ OK » 3 honored (0.112s)
+
+## Goals
+
+* **Be readable** - WunderAPI should guide people to make specs that can be read easily by people unfamiliar with the project, so they quickly know how to use the API. Much like Markdown itself, a WunderAPI spec document should be readable without running it through anything else
+
+* **Be fast** - Running tests isn't the funnest thing. Making it fast - which means running tests asynchronously - is the best way to make it fun to use
+
+* **Be easy** - While of course documentation is essential, it should be easy to write WunderAPI specs without thinking too much about the syntax. To that end, it hews as close to standard HTTP and other conventions from programming as possible.
 
 ## Format
 
@@ -100,7 +114,7 @@ Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TO
 
 In this example, the `[STATUS_ID]` will get set in the first server response, by simply matching whatever it sees there. This could be an integer, a string, or even an array or an object. From that moment on, the variable is *bound* - it cannot change for any reason. Thus, in the second test, if the `id` field of the response did not match what we got on creation, an error would be found.
 
-Variables may also be captured and inserted into headers:
+Variables may also be used in the path, and can be captured and inserted into headers:
 
     We sign in:
 
@@ -168,3 +182,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+[npm]: http://npmjs.org/ "Node Package Manager"
