@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.3
+
+* Added capture pattern '...', matches anything
+* Fixed a bug where multiple captures wouldn't be matched
+
 ## 0.0.2
 
 * Command-line tool `wunderapi` is provided
