@@ -5,6 +5,13 @@ var WunderAPI = require('wunderapi')
 var params = process.argv.slice(2)
 var options = { serial: true }
 
+var usageMessage =
+    "\n    wunderapi [-vspth] http://api.server:port/root file1 [file2 [...]]" +
+    "\n      -v         Show version number" +
+    "\n      -s         Run tests serially [default]" +
+    "\n      -p         Run tests in parallel" +
+    "\n      -h         Show this help"
+
 while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
     for (var opt = params.shift(); opt = opt.slice(1); ) {
         switch (opt[0]) {
@@ -17,10 +24,23 @@ while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
             case 's':
                 options.serial = true
                 break
+            case 'h':
+                usage()
+                break
             default:
                 console.log("Unrecognized option: -" + opt[0])
         }
     }
+}
+
+function usage() {
+    console.log(usageMessage)
+    usageMessage = "\n\nPlease specify some options"
+}
+
+if (params.length < 2) {
+    usage()
+    process.exit()
 }
 
 options.root = params.shift()
