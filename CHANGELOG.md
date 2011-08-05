@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.6
+
+* Improved README
+* Fix bug where headers would all behave like the last header
+* Handle empty bodies when detecting where the next request/response begins in markdown
+* Run tests serially by default, add `-p` flag to run in parallel
+* Add `-h` flag for help, also show usage if not enough parameters are given
+
 ## 0.0.5
 
 * Major refactor to allow concurrent test runs (previously all runs would share a variable space)
