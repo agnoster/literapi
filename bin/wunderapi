@@ -51,7 +51,7 @@ function runNext() {
     api.compileFile(params.shift(), function(err, vows) {
         if (err) throw(err)
 
-        vows.reporter = require('vows/lib/vows/reporters/spec')
+        //vows.reporter = require('vows/lib/vows/reporters/spec')
 
         if (options.serial) {
             vows.run(null, function(err, success) {
