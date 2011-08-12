@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.7
+
+* Fix bug where empty content would cause nginx to choke
+* Default output now shows only errors
+* To show all cases, including success, use `-a` flag
+* The `-p` flag for running suites in parallel is disabled to workaround Vows
+* Exit status of the process reflects test status:
+  * 0 (OK) if all tests passed
+  * 1 (FAIL) if any are broken or errored
+* Output now shows actual JSON response if there is a mismatch
+
 ## 0.0.6
 
 * Improved README

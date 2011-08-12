@@ -1,5 +1,5 @@
 { "name": "wunderapi"
-, "version": "0.0.6"
+, "version": "0.0.7"
 , "description": "Test your APIs with stories written in Markdown"
 , "keywords": ["testing", "api"]
 , "homepage": "https://github.com/6wunderkinder/wunderapi"
