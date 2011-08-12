@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var WunderAPI = require('wunderapi')
+  , vows = require('vows')
 
 var params = process.argv.slice(2)
 var options = { serial: true }
@@ -53,30 +54,59 @@ if (params.length < 2) {
 }
 
 options.root = params.shift()
+if (options.reporter) vows.reporter = options.reporter
+var running = 0
+var results = {
+    honored: 0,
+    broken:  0,
+    errored: 0,
+    pending: 0,
+    total:   0,
+    time:    0
+};
 
 function runNext() {
     var api = new WunderAPI(options.root)
-    if (params.length < 1) return
-    api.compileFile(params.shift(), function(err, vows) {
+    if (params.length < 1) {
+        checkIfDone()
+        return
+    }
+    running++
+
+    vows.reporter.reset();
+    
+    api.compileFile(params.shift(), function(err, suite) {
         if (err) throw(err)
 
-        if (options.reporter) vows.reporter = options.reporter
-
         if (options.serial) {
-            vows.run(null, function(err, success) {
+            suite.run(null, function(result) {
+                running--
+                Object.keys(result).forEach(function (k) {
+                    results[k] += result[k]
+                })
                 runNext()
+                checkIfDone()
             })
         } else {
-            vows.run()
+            suite.run(null, function(result) {
+                running--
+                Object.keys(result).forEach(function (k) {
+                    results[k] += result[k]
+                })
+                checkIfDone()
+            })
+            runNext()
         }
     })
 }
 
-if (options.serial) {
-    runNext() 
-} else {
-    while (params.length) {
-        runNext()
+function checkIfDone() {
+    if (running <= 0) {
+        var status = 0
+        if (results.errored || results.broken) status = 1
+        process.exit(status)
     }
 }
+
+runNext() 
 
