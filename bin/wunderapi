@@ -7,10 +7,8 @@ var params = process.argv.slice(2)
 var options = { serial: true }
 
 var usageMessage =
-    "\n    wunderapi [-vspth] http://api.server:port/root file1 [file2 [...]]" +
+    "\n    wunderapi [-vah] http://api.server:port/root file1 [file2 [...]]" +
     "\n      -v         Show version number" +
-    "\n      -s         Run tests serially [default]" +
-    "\n      -p         Run tests in parallel" +
     "\n      -a         Show all results, not just errors" +
     "\n      -h         Show this help"
 
