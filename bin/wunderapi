@@ -54,7 +54,8 @@ if (params.length < 2) {
 }
 
 options.root = params.shift()
-if (options.reporter) vows.reporter = options.reporter
+vowsoptions = {}
+if (options.reporter) vowsoptions.reporter = options.reporter
 var running = 0
 var results = {
     honored: 0,
@@ -79,7 +80,7 @@ function runNext() {
         if (err) throw(err)
 
         if (options.serial) {
-            suite.run(null, function(result) {
+            suite.run(vowsoptions, function(result) {
                 running--
                 Object.keys(result).forEach(function (k) {
                     results[k] += result[k]
@@ -88,7 +89,7 @@ function runNext() {
                 checkIfDone()
             })
         } else {
-            suite.run(null, function(result) {
+            suite.run(vowsoptions, function(result) {
                 running--
                 Object.keys(result).forEach(function (k) {
                     results[k] += result[k]
