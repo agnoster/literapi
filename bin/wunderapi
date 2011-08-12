@@ -10,6 +10,7 @@ var usageMessage =
     "\n      -v         Show version number" +
     "\n      -s         Run tests serially [default]" +
     "\n      -p         Run tests in parallel" +
+    "\n      -a         Show all results, not just errors" +
     "\n      -h         Show this help"
 
 while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
@@ -26,6 +27,9 @@ while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
                 break
             case 'h':
                 usage()
+                break
+            case 'a':
+                options.reporter = require('vows/lib/vows/reporters/spec')
                 break
             default:
                 console.log("Unrecognized option: -" + opt[0])
@@ -51,7 +55,7 @@ function runNext() {
     api.compileFile(params.shift(), function(err, vows) {
         if (err) throw(err)
 
-        //vows.reporter = require('vows/lib/vows/reporters/spec')
+        if (options.reporter) vows.reporter = options.reporter
 
         if (options.serial) {
             vows.run(null, function(err, success) {
