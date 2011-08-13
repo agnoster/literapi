@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.8
+
+* Fix bug where [] and {} would incorrectly match null
+* Fix bug where `-a` flag would crash
+* Correct usage information
+* Exit status 2 if any tests errored, 3 if there were both errors and broken test
+* Major refactor to the JSON expression matching
+    * JSONExp is now its own class, will later be split into own module
+    * Variables will now be checked for identity even in the context in which they are declared
+    * Substring variable replacement no longer supported
+
 ## 0.0.7
 
 * Fix bug where empty content would cause nginx to choke
