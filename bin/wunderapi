@@ -102,7 +102,8 @@ function runNext() {
 function checkIfDone() {
     if (running <= 0) {
         var status = 0
-        if (results.errored || results.broken) status = 1
+        if (results.broken) status += 1
+        if (results.errored) status += 2
         process.exit(status)
     }
 }
