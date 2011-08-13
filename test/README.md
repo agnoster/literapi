@@ -100,7 +100,7 @@ This cannot be allowed, so the system returns an error:
     404 Not Found
     Content-Type: application/json
 
-    { "error": "Could not find task \"[ITEM_ID]\"" }
+    { "error": * }
 
 ## Empty list after deletion
 
