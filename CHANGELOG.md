@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.9
+
+* Fix bug where only one pattern would get matched per key in request
+* Added test for multiple occurrences of a capture in request and response
+
 ## 0.0.8
 
 * Fix bug where [] and {} would incorrectly match null
