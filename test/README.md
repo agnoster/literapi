@@ -112,3 +112,14 @@ This cannot be allowed, so the system returns an error:
     Content-Type: application/json
 
     []
+
+## Using the same variable twice
+
+    POST /tasks/
+    Content-type: application/json
+
+    { "name": "Test thing", "dummy1": [ITEM_ID], "dummy2": [ITEM_ID] }
+
+    201 Created
+
+    { "name": "Test thing", "dummy1": [ITEM_ID], "dummy2": [ITEM_ID], ... }
