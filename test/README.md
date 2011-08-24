@@ -122,4 +122,18 @@ This cannot be allowed, so the system returns an error:
 
     201 Created
 
-    { "name": "Test thing", "dummy1": [ITEM_ID], "dummy2": [ITEM_ID], ... }
+    { "name": "Test thing", "dummy1": [ITEM_ID], "dummy2": [ITEM_ID], "id": [ITEM_TWO], ... }
+
+## Capturing deeply-nested structures
+
+    GET /tasks/[ITEM_TWO]
+
+    200 OK
+
+    [ITEM_TWO_DATA]
+
+    GET /tasks/[ITEM_TWO]
+
+    200 OK
+
+    [ITEM_TWO_DATA]
