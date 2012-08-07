@@ -1,6 +1,6 @@
 # Example Tasks API
 
-This is an example of how to use WunderAPI to document and test your server. Here we have an example server that serves up a simple webservice that represents a task list.
+This is an example of how to use LiterAPI to document and test your server. Here we have an example server that serves up a simple webservice that represents a task list.
 
 ## List tasks
 

@@ -1,17 +1,17 @@
-{ "name": "wunderapi"
-, "version": "0.0.9"
-, "description": "Test your APIs with stories written in Markdown"
-, "keywords": ["testing", "api"]
-, "homepage": "https://github.com/6wunderkinder/wunderapi"
-, "author": "Isaac Wolkerstorfer <isaac@6wunderkinder.com>"
+{ "name": "literapi"
+, "version": "0.0.10"
+, "description": "Literate testing for HTTP APIs using markdown"
+, "keywords": ["testing", "api", "rest"]
+, "homepage": "https://github.com/agnoster/literapi"
+, "author": "Isaac Wolkerstorfer <agnoster@gmail.com>"
 , "main": "./lib/index.js"
 , "repository": 
   { "type": "git"
-  , "url": "git://github.com/6wunderkinder/wunderapi.git"
+  , "url": "git://github.com/agnoster/literapi.git"
   }
 , "dirs": [ "lib", "test" ]
 , "files": [ "LICENSE", "CHANGELOG.md", "README.md", "package.json" ]
-, "bin": "./bin/wunderapi"
+, "bin": "./bin/literapi"
 , "preferGlobal": true
 , "scripts":
   { "test": "node test/test.js"

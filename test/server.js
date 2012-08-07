@@ -62,7 +62,7 @@ router.put(/\/tasks\/(\w+)/).bind(function (req, res, id, task) {
     res.send(tasks.set(id, task))
 })
 router.del(/\/tasks\/(\w+)/).bind(function (req, res, id) {
-    tasks.remove(id)
+//    tasks.remove(id)
     res.send(204)
 })
 

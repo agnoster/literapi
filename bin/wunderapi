@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-var WunderAPI = require('wunderapi')
+var LiterAPI = require('literapi')
   , vows = require('vows')
 
 var params = process.argv.slice(2)
 var options = { serial: true }
 
 var usageMessage =
-    "\n    wunderapi [-vah] http://api.server:port/root file1 [file2 [...]]" +
+    "\n    literapi [-vah] http://api.server:port/root file1 [file2 [...]]" +
     "\n      -v         Show version number" +
     "\n      -a         Show all results, not just errors" +
     "\n      -d         Delay 100ms between calls (additional -d will double the delay)" +
@@ -17,7 +17,7 @@ while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
     for (var opt = params.shift(); opt = opt.slice(1); ) {
         switch (opt[0]) {
             case 'v':
-                console.log(WunderAPI.getVersion())
+                console.log(LiterAPI.getVersion())
                 break
             case 'p':
                 options.serial = false
@@ -71,7 +71,7 @@ var results = {
 };
 
 function runNext() {
-    var api = new WunderAPI(options)
+    var api = new LiterAPI(options)
     if (params.length < 1) {
         checkIfDone()
         return

@@ -1,9 +1,9 @@
 var server = require('./server')
-  , WunderAPI = require('../lib')
+  , LiterAPI = require('../lib')
 
 var port = 74123
 
-var api = new WunderAPI(
+var api = new LiterAPI(
   { root: "http://localhost:" + port
   , compiler: "vows"
   , parser: "markdown"

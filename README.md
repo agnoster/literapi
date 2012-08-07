@@ -1,18 +1,18 @@
-# WunderAPI
+# LiterAPI
 
-WunderAPI is a tool for defining, documenting, and testing an API by simply writing example API calls in a markdown document. It is currently intended only for testing APIs that return JSON, and are described in a Markdown file.
+LiterAPI is a tool for defining, documenting, and testing an API by simply writing example API calls in a markdown document. It is currently intended only for testing APIs that return JSON, and are described in a Markdown file.
 
-In essence, you write a couple examples in your doc/spec and - *BAM* - WunderAPI turns those into executable tests.
+In essence, you write a couple examples in your doc/spec and - *BAM* - LiterAPI turns those into executable tests.
 
 ## Installation
 
-    npm install -g wunderapi
+    npm install -g literapi
 
 (If you don't have [npm], you really should.)
 
 ## Usage
 
-    wunderapi [API root URI] [testfile1] [testfile2] ...
+    literapi [API root URI] [testfile1] [testfile2] ...
 
 ## Example
 
@@ -33,7 +33,7 @@ If you had the file `example.md`:
 
 Executing it like this:
 
-    wunderapi http://api.example.com/v1/ example.md
+    literapi http://api.example.com/v1/ example.md
 
 Would give the output:
 
@@ -46,11 +46,11 @@ Would give the output:
 
 ## Goals
 
-* **Be readable** - WunderAPI should guide people to make specs that can be read easily by people unfamiliar with the project, so they quickly know how to use the API. Much like Markdown itself, a WunderAPI spec document should be readable without running it through anything else
+* **Be readable** - LiterAPI should guide people to make specs that can be read easily by people unfamiliar with the project, so they quickly know how to use the API. Much like Markdown itself, a LiterAPI spec document should be readable without running it through anything else
 
 * **Be fast** - Running tests isn't the funnest thing. Making it fast - which means running tests asynchronously - is the best way to make it fun to use
 
-* **Be easy** - While of course documentation is essential, it should be easy to write WunderAPI specs without thinking too much about the syntax. To that end, it hews as close to standard HTTP and other conventions from programming as possible.
+* **Be easy** - While of course documentation is essential, it should be easy to write LiterAPI specs without thinking too much about the syntax. To that end, it hews as close to standard HTTP and other conventions from programming as possible.
 
 ## Format
 
@@ -84,11 +84,11 @@ Acceptance criteria:
 
 ## Advanced Format
 
-Sometimes, literally matching the response just isn't powerful enough. For this reason, there are some extra tools that WunderAPI gives you.
+Sometimes, literally matching the response just isn't powerful enough. For this reason, there are some extra tools that LiterAPI gives you.
 
 ### Variables
 
-Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TOKEN]`) is considered a *variable*. Since WunderAPI is declarative, all instances of a variable must match. Here's an example:
+Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TOKEN]`) is considered a *variable*. Since LiterAPI is declarative, all instances of a variable must match. Here's an example:
 
     We post a new status update:
 
@@ -142,7 +142,7 @@ This last response brings us to our next topic: globs
 
 ### Globs
 
-WunderAPI supports two kinds of globs: `*`, which matches any JSON value, and `...`, which matches any set of key-value pairs.
+LiterAPI supports two kinds of globs: `*`, which matches any JSON value, and `...`, which matches any set of key-value pairs.
 
 The `*` glob is useful if you care that a value is there, but not what it is. It can be thought of as a variable that does not capture any value. For example, you might write:
 
@@ -154,15 +154,23 @@ The `*` glob is useful if you care that a value is there, but not what it is. It
 
 In this instance, the response value would be required to have an `id` of 1, a `text` of "This entry was inserted previously", and a `created_at` field - however, the `created_at` field could be any value at all: a string, a number, a boolean, even an array or an object. If any of those fields were missing, we would get an error - but we would *also* get an error if any fields were returned that were not shown here.
 
-The `...` glob is useful for just the case where we want to ensure certain fields are set, but there may be other fields we don't care to enumerate. Caution should, however, be exercised - part of the value of WunderAPI specs is that a reader can have a good impression of the full extent of the API, and thus, even if the testing of particular fields is not necessary, being strict will both ensure greater understandability of the markdown *and* additional protection from unforseen consequences if the API changes in any way.
+The `...` glob is useful for just the case where we want to ensure certain fields are set, but there may be other fields we don't care to enumerate. Caution should, however, be exercised - part of the value of LiterAPI specs is that a reader can have a good impression of the full extent of the API, and thus, even if the testing of particular fields is not necessary, being strict will both ensure greater understandability of the markdown *and* additional protection from unforseen consequences if the API changes in any way.
+
+Example usage:
+
+    { "id": [USER_ID], "name": "Joe Schmoe", ... }
+
+The `...` glob may also be used at the beginning or end of an array, such as:
+
+    { "stream": ["first post!!!1", "second post", ...] }
 
 ## Contributing
 
-WunderAPI is licensed under an MIT License. Contributions and bug reports are welcome, please use Github for those purposes.
+LiterAPI is licensed under an MIT License. Contributions and bug reports are welcome, please use Github for those purposes.
 
 ### License
 
-Copyright (C) 2011 by 6 Wunderkinder GmbH
+Copyright (C) 2012 by Isaac Wolkerstorfer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
