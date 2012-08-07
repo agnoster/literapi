@@ -11,7 +11,7 @@ You can get a list of tasks quite simply:
 Initially, the database may be empty.
 
     200 OK
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
     
     []
 
@@ -20,14 +20,14 @@ Initially, the database may be empty.
 In order to track our tasks, we're going to create a new task, which works as follows:
 
     POST /tasks/
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "name": "Take out the garbage" }
 
 The response will return the newly-created task, with the default parameter `done` set to false if not otherwise specified.
 
     201 Created
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "id": [ITEM_ID], "name": "Take out the garbage", "done": false }
 
@@ -36,14 +36,14 @@ The response will return the newly-created task, with the default parameter `don
 If we try to create a task without a name:
 
     POST /tasks/
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "done": true }
 
 This cannot be allowed, so the system returns an error:
 
     422 Unprocessable Entity
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "message": "Task must contain a name" }
 
@@ -54,21 +54,21 @@ This cannot be allowed, so the system returns an error:
 ### Response
 
     200 OK
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "id": [ITEM_ID], "name": "Take out the garbage", "done": false }
 
 ## Update a task
 
     PUT /tasks/[ITEM_ID]
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true }
 
 ### Response
 
     200 OK
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true }
 
@@ -79,7 +79,7 @@ This cannot be allowed, so the system returns an error:
 ### Response
 
     200 OK
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     [ { "id": [ITEM_ID], "name": "Take out the garbage today", "done": true } ]
 
@@ -98,7 +98,7 @@ This cannot be allowed, so the system returns an error:
 ### Response
 
     404 Not Found
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     { "error": * }
 
@@ -109,14 +109,14 @@ This cannot be allowed, so the system returns an error:
 ### Response
 
     200 OK
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 
     []
 
 ## Using the same variable twice
 
     POST /tasks/
-    Content-type: application/json
+    Content-type: application/json; charset=utf-8
 
     { "name": "Test thing", "dummy1": [ITEM_ID], "dummy2": [ITEM_ID] }
 

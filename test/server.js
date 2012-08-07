@@ -1,6 +1,8 @@
-var journey = require('journey')
+var express = require('express')
+  , http = require('http')
 
-var router = new journey.Router
+var router = express()
+router.use(express.bodyParser())
 
 function fakeDB(defaults) {
     var items = {}
@@ -45,41 +47,30 @@ function fakeDB(defaults) {
 
 var tasks = new fakeDB({ done: false })
 
-router.get('/tasks/').bind(function (req, res) {
+router.get('/tasks/', function (req, res) {
     var list = tasks.list()
-    res.send(200, {}, tasks.list())
+    res.json(200, tasks.list())
 })
-router.get(/\/tasks\/(\w+)/).bind(function (req, res, id) {
+router.get(/\/tasks\/(.+)/, function (req, res) {
+    var id = req.params[0]
     var task = tasks.get(id)
-    if (task) res.send(tasks.get(id))
-    else res.send(404, {}, { error: 'Could not find task "' + id + '"'})
+    if (task) res.json(200, tasks.get(id))
+    else res.json(404, { error: 'Could not find task "' + id + '"'})
 })
-router.post('/tasks/').bind(function (req, res, task) {
-    if (!task.name) return res.send(422, {}, { message: "Task must contain a name" })
-    res.send(201, {}, tasks.insert(task))
+router.post('/tasks/', function (req, res) {
+    var task = req.body
+    if (!task.name) return res.json(422, { message: "Task must contain a name" })
+    res.json(201, tasks.insert(task))
 })
-router.put(/\/tasks\/(\w+)/).bind(function (req, res, id, task) {
-    res.send(tasks.set(id, task))
+router.put(/\/tasks\/(\w+)/, function (req, res) {
+    var id = req.params[0]
+    var task = req.body
+    res.json(200, tasks.set(id, task))
 })
-router.del(/\/tasks\/(\w+)/).bind(function (req, res, id) {
-//    tasks.remove(id)
+router.del(/\/tasks\/(\w+)/, function (req, res) {
+    var id = req.params[0]
+    tasks.remove(id)
     res.send(204)
 })
 
-var server = require('http').createServer(function (request, response) {
-    var body = "";
-
-    request.addListener('data', function (chunk) { body += chunk });
-    request.addListener('end', function () {
-        //
-        // Dispatch the request to the router
-        //
-        router.handle(request, body, function (result) {
-            response.writeHead(result.status, result.headers);
-            response.end(result.body);
-        });
-    });
-})
-
-module.exports = server
-
+module.exports = http.createServer(router)

@@ -17,11 +17,15 @@
   { "test": "node test/test.js"
   }
 , "dependencies":
-  { "vows": "~0.5"
-  , "request": "~2.0"
-  , "marked": "0.0.1"
+  { "vows": "~0.6"
+  , "request": "~2.10"
+  , "marked": "~0.2"
   }
 , "devDependencies":
-  { "journey": "0.4.0-pre-2"
+  { "express": "~3.0"
+  }
+, "engines":
+  { "node": "0.8.x"
+  , "npm":  "1.1.x"
   }
 }
