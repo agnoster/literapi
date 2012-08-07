@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.10
+
+* Rebrand to LiterAPI by agnoster, instead of WunderAPI by 6Wunderkinder
+* Move to node 0.8.x
+
 ## 0.0.9
 
 * Fix bug where only one pattern would get matched per key in request
