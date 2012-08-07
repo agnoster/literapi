@@ -8,6 +8,15 @@ In essence, you write a couple examples in your doc/spec and - *BAM* - LiterAPI 
 
     npm install -g literapi
 
+Or, include it in your `package.json`
+
+    { ...
+      "devDependencies": {
+        ...
+        "literapi": "~0.0.10"
+        }
+      }
+
 (If you don't have [npm], you really should.)
 
 ## Usage
