@@ -9,9 +9,9 @@
   { "type": "git"
   , "url": "git://github.com/agnoster/literapi.git"
   }
-, "dirs": [ "lib", "test" ]
-, "files": [ "LICENSE", "CHANGELOG.md", "README.md", "package.json" ]
-, "bin": "./bin/literapi"
+, "bin": 
+  { "literapi": "./bin/literapi"
+  }
 , "preferGlobal": true
 , "scripts":
   { "test": "node test/test.js"
