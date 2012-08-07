@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.11
+
+* Fix for broken `npm publish` - most files were not included correctly
+
 ## 0.0.10
 
 * Rebrand to LiterAPI by agnoster, instead of WunderAPI by 6Wunderkinder
