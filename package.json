@@ -20,6 +20,7 @@
   { "vows": "~0.6"
   , "request": "~2.10"
   , "marked": "~0.2"
+  , "jsonexp": "~0.0.1"
   }
 , "devDependencies":
   { "express": "~3.0"
