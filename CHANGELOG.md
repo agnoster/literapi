@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0
+
+* Depend on JSONExp from npm
+* Refer to JSONExp documentation in the README
+* Replace the misleading "variables" with "bindings"
+* Continuous testing on Travis CI
+
 ## 0.0.11
 
 * Fix for broken `npm publish` - most files were not included correctly
