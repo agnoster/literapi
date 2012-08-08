@@ -99,9 +99,9 @@ Sometimes, literally matching the response just isn't powerful enough. For this 
 
 See the [JSONExp Documentation][] for a more detailed description of how these patterns are parsed and matched.
 
-### Variables
+### Bindings
 
-Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TOKEN]`) is considered a *variable*. Since LiterAPI is declarative, all instances of a variable must match. Here's an example:
+Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TOKEN]`) is considered a *binding*. Bindings can be thought of as similar to captures in a RegExp, or named values. Since LiterAPI is declarative, all instances of a binding must match. Here's an example:
 
     We post a new status update:
 
@@ -125,9 +125,9 @@ Any uppercase text enclosed in square brackets (such as `[USER_ID]` or `[AUTH_TO
 
         { "id": [STATUS_ID], "text": "Hello World" }
 
-In this example, the `[STATUS_ID]` will get set in the first server response, by simply matching whatever it sees there. This could be an integer, a string, or even an array or an object. From that moment on, the variable is *bound* - it cannot change for any reason. Thus, in the second test, if the `id` field of the response did not match what we got on creation, an error would be found.
+In this example, the `[STATUS_ID]` will get set in the first server response, by simply matching whatever it sees there. This could be an integer, a string, or even an array or an object. From that moment on, the binding is *bound* - it cannot change for any reason. Thus, in the second test, if the `id` field of the response did not match what we got on creation, an error would be found.
 
-Variables may also be used in the path, and can be captured and inserted into headers:
+Bindings may also be used in the path, and can be captured and inserted into headers:
 
     We sign in:
 
@@ -157,7 +157,7 @@ This last response brings us to our next topic: globs
 
 LiterAPI supports two kinds of globs: `*`, which matches any JSON value, and `...`, which matches any set of key-value pairs.
 
-The `*` glob is useful if you care that a value is there, but not what it is. It can be thought of as a variable that does not capture any value. For example, you might write:
+The `*` glob is useful if you care that a value is there, but not what it is. It can be thought of as a binding that does not capture any value. For example, you might write:
 
     GET /status/1
 
