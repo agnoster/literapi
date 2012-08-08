@@ -1,4 +1,7 @@
-# LiterAPI [![build status](https://secure.travis-ci.org/agnoster/literapi.png)](http://travis-ci.org/agnoster/literapi)
+# LiterAPI
+
+* master: [![build status](https://secure.travis-ci.org/agnoster/literapi.png?branch=master)](http://travis-ci.org/agnoster/literapi)
+* release: [![build status](https://secure.travis-ci.org/agnoster/literapi.png?branch=release)](http://travis-ci.org/agnoster/literapi)
 
 LiterAPI is a tool for defining, documenting, and testing an API by simply writing example API calls in a markdown document. It is currently intended only for testing APIs that return JSON, and are described in a Markdown file.
 
