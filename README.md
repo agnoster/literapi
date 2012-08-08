@@ -4,6 +4,8 @@ LiterAPI is a tool for defining, documenting, and testing an API by simply writi
 
 In essence, you write a couple examples in your doc/spec and - *BAM* - LiterAPI turns those into executable tests.
 
+It uses [JSONExp][] for matching expected vs. actual JSON responses. See the [JSONExp Documentation][] for more detailed information on the special syntax features.
+
 ## Installation
 
     npm install -g literapi
@@ -93,7 +95,9 @@ Acceptance criteria:
 
 ## Advanced Format
 
-Sometimes, literally matching the response just isn't powerful enough. For this reason, there are some extra tools that LiterAPI gives you.
+Sometimes, literally matching the response just isn't powerful enough. For this reason, there are some extra tools that LiterAPI gives you via [JSONExp][], a system for expressing JSON-matching patterns, inspired by Regular Expressions.
+
+See the [JSONExp Documentation][] for a more detailed description of how these patterns are parsed and matched.
 
 ### Variables
 
@@ -200,3 +204,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 [npm]: http://npmjs.org/ "Node Package Manager"
+[JSONExp]: https://github.com/agnoster/jsonexp
+[JSONExp Documentation]: https://github.com/agnoster/jsonexp/wiki/Documentation
