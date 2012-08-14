@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+* Added `-w` flag, allowing you to overwrite the file with ok/fail annotations
+* Marked the package as compatible with node.js >0.6
+
 ## 0.1.0
 
 * Depend on JSONExp from npm
