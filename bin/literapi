@@ -2,6 +2,8 @@
 
 var LiterAPI = require('literapi')
   , vows = require('vows')
+  , util = require('util')
+  , fs = require('fs')
 
 var params = process.argv.slice(2)
 var options = { serial: true }
@@ -11,11 +13,15 @@ var usageMessage =
     "\n      -v         Show version number" +
     "\n      -a         Show all results, not just errors" +
     "\n      -d         Delay 100ms between calls (additional -d will double the delay)" +
+    "\n      -w         Overwrite the document with annotations about successes and failures" +
     "\n      -h         Show this help"
 
 while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
     for (var opt = params.shift(); opt = opt.slice(1); ) {
         switch (opt[0]) {
+            case 'w':
+                options.write = true
+                break
             case 'v':
                 console.log(LiterAPI.getVersion())
                 break
@@ -70,6 +76,29 @@ var results = {
     time:    0
 };
 
+function markup(suite) {
+    
+    var batch, token, tags
+
+    for (var i = 0; i < suite.batches.length; i++) {
+
+        batch = suite.batches[i]
+        token = batch.tests._token
+        if (!token) continue
+
+        if (batch.broken || batch.errored) token.tags = 'fail'
+        else token.tags = 'ok'
+
+        token.refresh()
+    }
+    return suite.tokens.join('')
+}
+
+function dumpMarkup(suite, outfile) {
+    
+    var file = fs.writeFileSync(outfile, markup(suite))
+}
+
 function runNext() {
     var api = new LiterAPI(options)
     if (params.length < 1) {
@@ -80,29 +109,37 @@ function runNext() {
 
     vows.reporter.reset();
     
-    api.compileFile(params.shift(), function(err, suite) {
-        if (err) throw(err)
+    (function(infile) {
 
-        if (options.serial) {
-            suite.run(vowsoptions, function(result) {
-                running--
-                Object.keys(result).forEach(function (k) {
-                    results[k] += result[k]
+        api.compileFile(infile, function(err, suite) {
+
+            if (err) throw(err)
+
+            if (options.serial) {
+                suite.run(vowsoptions, function(result) {
+                    running--
+
+                    Object.keys(result).forEach(function (k) {
+                        results[k] += result[k]
+                    })
+
+                    if (options.write) dumpMarkup(suite, infile)
+
+                    runNext()
+                    checkIfDone()
+                })
+            } else {
+                suite.run(vowsoptions, function(result) {
+                    running--
+                    Object.keys(result).forEach(function (k) {
+                        results[k] += result[k]
+                    })
+                    checkIfDone()
                 })
                 runNext()
-                checkIfDone()
-            })
-        } else {
-            suite.run(vowsoptions, function(result) {
-                running--
-                Object.keys(result).forEach(function (k) {
-                    results[k] += result[k]
-                })
-                checkIfDone()
-            })
-            runNext()
-        }
-    })
+            }
+        })
+    })(params.shift())
 }
 
 function checkIfDone() {
