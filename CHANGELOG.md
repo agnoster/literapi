@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+* Allow raw interpolation of bindings into strings using [$BINDING]
+
 ## 0.1.1
 
 * Added `-w` flag, allowing you to overwrite the file with ok/fail annotations

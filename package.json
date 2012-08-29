@@ -1,15 +1,15 @@
 { "name": "literapi"
-, "version": "0.1.1"
+, "version": "0.1.2"
 , "description": "Literate testing for HTTP APIs using markdown"
 , "keywords": ["testing", "test", "api", "rest", "http", "documentation", "docs", "literate"]
 , "homepage": "https://github.com/agnoster/literapi"
 , "author": "Isaac Wolkerstorfer <agnoster@gmail.com>"
 , "main": "./lib/index.js"
-, "repository": 
+, "repository":
   { "type": "git"
   , "url": "git://github.com/agnoster/literapi.git"
   }
-, "bin": 
+, "bin":
   { "literapi": "./bin/literapi"
   }
 , "preferGlobal": true
