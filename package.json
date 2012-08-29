@@ -20,7 +20,9 @@
   { "vows": "~0.6"
   , "request": "~2.10"
   , "markdownstream": "0.0.2"
-  , "jsonexp": "~0.0.1"
+  , "jsonexp": "*"
+  , "optimist": "~0.3.4"
+  , "watch": "~0.5.1"
   }
 , "devDependencies":
   { "express": "~3.0"
