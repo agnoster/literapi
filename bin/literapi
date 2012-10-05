@@ -77,7 +77,7 @@ var results = {
 };
 
 function markup(suite) {
-    
+
     var batch, token, tags
 
     for (var i = 0; i < suite.batches.length; i++) {
@@ -95,7 +95,7 @@ function markup(suite) {
 }
 
 function dumpMarkup(suite, outfile) {
-    
+
     var file = fs.writeFileSync(outfile, markup(suite))
 }
 
@@ -108,7 +108,7 @@ function runNext() {
     running++
 
     vows.reporter.reset();
-    
+
     (function(infile) {
 
         api.compileFile(infile, function(err, suite) {
@@ -151,5 +151,5 @@ function checkIfDone() {
     }
 }
 
-runNext() 
+runNext()
 
