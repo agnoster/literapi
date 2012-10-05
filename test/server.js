@@ -60,7 +60,7 @@ router.get(/\/tasks\/(.+)/, function (req, res) {
 router.post('/tasks/', function (req, res) {
     var task = req.body
     if (!task.name) return res.json(422, { message: "Task must contain a name" })
-    res.json(201, tasks.insert(task))
+    return res.json(201, tasks.insert(task))
 })
 router.put(/\/tasks\/(\w+)/, function (req, res) {
     var id = req.params[0]

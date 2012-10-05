@@ -48,7 +48,7 @@ while (params[0] && params[0][0] && params[0][0] == '-') { // option flag
 
 options.delay = options.delay || 25
 
-if (options.serial == false) {
+if (!options.serial) {
     console.log("Unfortunately, due to the ways vows work, tests *must* be run serially for now.")
     options.serial = true
 }
