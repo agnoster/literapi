@@ -14,7 +14,7 @@
   }
 , "preferGlobal": true
 , "scripts":
-  { "test": "node test/test.js"
+  { "test": "node test/example.js"
   }
 , "dependencies":
   { "vows": "~0.6"

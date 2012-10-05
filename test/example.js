@@ -1,4 +1,4 @@
-var server = require('./server')
+var server = require('./example/server')
   , LiterAPI = require('../lib')
 
 var port = 74123
@@ -10,7 +10,7 @@ var api = new LiterAPI(
   })
 
 server.listen(port)
-api.compileFile('test/README.md', function(err, vows) {
+api.compileFile('test/example/README.md', function(err, vows) {
     if (err) throw(err)
 
     vows.reporter = require('vows/lib/vows/reporters/spec')
