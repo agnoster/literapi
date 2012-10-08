@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+* Add a new 'quiet' mode with -q
+* Internal clean-up
+
 ## 0.1.2
 
 * Allow raw interpolation of bindings into strings using [$BINDING]
