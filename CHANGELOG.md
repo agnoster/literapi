@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.4
+
+* Add support for 'pending' tag (you can add it to fenced code blocks)
+* Fix -v version output
+
 ## 0.1.3
 
 * Add a new 'quiet' mode with -q
