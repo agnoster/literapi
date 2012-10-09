@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.4
+## 0.2.0
 
 * Add support for 'pending' tag (you can add it to fenced code blocks)
 * Fix -v version output
