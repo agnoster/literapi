@@ -1,5 +1,5 @@
 { "name": "literapi"
-, "version": "0.2.0"
+, "version": "0.2.1"
 , "description": "Literate testing for HTTP APIs using markdown"
 , "keywords": ["testing", "test", "api", "rest", "http", "documentation", "docs", "literate"]
 , "homepage": "https://github.com/agnoster/literapi"
