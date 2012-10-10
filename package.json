@@ -24,7 +24,7 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "test": "node test/example.js"
+    "test": "make tap"
   },
   "dependencies": {
     "vows": "~0.6",

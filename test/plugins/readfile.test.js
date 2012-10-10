@@ -1,9 +1,9 @@
 var gently = global.GENTLY = new (require('gently'))
-  , readfile = require('../lib/plugins/readfile').document
+  , readfile = require('../../lib/plugins/readfile').documents
   , should = require('should')
   , fs = require('fs')
 
-describe("Readfile plugin", function() {
+describe("readfile plugin", function() {
   it("inserts the right content into the document", function(done) {
 
     var doc = { filename: 'hello.txt' }
