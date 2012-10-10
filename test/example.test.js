@@ -15,7 +15,7 @@ describe('Literapi', function() {
 
   it("runs the example case succesfully", function(done){
     literapi.withDefaultPlugins({ root: "http://localhost:" + port })
-      .use(literapi.writefile({ ext: '.new' }))
+      //.use(literapi.writefile({ ext: '.new' }))
       .runWithFiles(['test/example/README.md'], function(err) {
         if (err) throw err
         done()
