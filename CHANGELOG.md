@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.1
+
+* Fix bug where process wouldn't exit correctly
+
+## 0.2.0
+
+* Add support for 'pending' tag (you can add it to fenced code blocks)
+* Fix -v version output
+
+## 0.1.3
+
+* Add a new 'quiet' mode with -q
+* Internal clean-up
+
 ## 0.1.2
 
 * Allow raw interpolation of bindings into strings using [$BINDING]
