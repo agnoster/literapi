@@ -16,6 +16,7 @@ describe("http_request plugin", function() {
         , body: '{ "hello": "world" }'
         , request: true
         }
+      , context: {}
       }
 
     plugin = http_request({ root: "http://localhost" }).examples
@@ -35,7 +36,7 @@ describe("http_request plugin", function() {
 
     plugin(example, function(err) {
       should.not.exist(err)
-      example.response.should.eql("RESPONSE")
+      example.context.response.should.eql("RESPONSE")
       done()
     })
   })
@@ -63,7 +64,7 @@ describe("http_request plugin", function() {
 
     plugin(example, function(err) {
       should.not.exist(err)
-      example.response.should.eql("RESPONSE")
+      example.context.response.should.eql("RESPONSE")
       done()
     })
   })
@@ -78,7 +79,7 @@ describe("http_request plugin", function() {
 
     plugin(example, function(err) {
       should.not.exist(err)
-      should.not.exist(example.response)
+      should.not.exist(example.context.response)
       done()
     })
 

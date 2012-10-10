@@ -3,7 +3,7 @@ var gently = global.GENTLY = new (require('gently'))
   , should = require('should')
 
 describe("http_parse plugin", function() {
-  it("parses http params", function(done) {
+  it("parses http requests", function(done) {
 
     var example = { text: "POST /hello\nContent-type: text/plain\n\nHello World" }
 
@@ -16,6 +16,24 @@ describe("http_parse plugin", function() {
         , body: "Hello World"
         , request: true
         , title: 'POST /hello'
+        })
+      done()
+    })
+  })
+
+  it("parses http responses", function(done) {
+
+    var example = { text: "200 OK\nContent-type: text/plain\n\nHello World" }
+
+    http_parse(example, function(err) {
+      should.not.exist(err)
+      example.http.should.eql(
+        { code: 200
+        , statusText: 'OK'
+        , headers: { 'content-type': 'text/plain' }
+        , body: "Hello World"
+        , response: true
+        , title: '200 OK'
         })
       done()
     })
