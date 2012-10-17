@@ -12,7 +12,7 @@ Initially, the database may be empty.
 
     200 OK
     Content-Type: application/json; charset=utf-8
-    
+
     []
 
 ## Create a new task
@@ -75,7 +75,7 @@ This cannot be allowed, so the system returns an error:
 ## List updated tasks
 
     GET /tasks/
-    
+
 ### Response
 
     200 OK
