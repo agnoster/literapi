@@ -27,17 +27,18 @@
     "test": "make tap"
   },
   "dependencies": {
-    "should": "~1.2.0",
+    "mocha": "~1.6.0",
     "request": "~2.10",
     "markdownstream": "0.0.2",
-    "jsonexp": "~0.0.1",
+    "jsonexp": "0.0.3",
     "debug": "~0.7.0",
-    "async": "~0.1.22"
+    "async": "~0.1.22",
+    "underscore": "~1.4.2"
   },
   "devDependencies": {
     "express": "~3.0",
-    "gently": "~0.9.2",
-    "mocha": "~1.6.0"
+    "should": "~1.2.0",
+    "gently": "~0.9.2"
   },
   "engines": {
     "node": ">0.6.0",

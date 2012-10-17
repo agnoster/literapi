@@ -16,7 +16,7 @@ describe("http_request plugin", function() {
         , body: '{ "hello": "world" }'
         , request: true
         }
-      , context: {}
+      , context: { bindings: {} }
       }
 
     plugin = http_request({ root: "http://localhost" }).examples
@@ -43,7 +43,7 @@ describe("http_request plugin", function() {
 
   it("interpolates context", function(done) {
 
-    example.context = { id: 2, auth: "sesame", name: "world" }
+    example.context.bindings = { id: 2, auth: "sesame", name: "world" }
     example.http.path = '/hello/[id]'
     example.http.headers.authorization = 'Bearer [auth]'
     example.http.headers['content-type'] = 'application/json'
