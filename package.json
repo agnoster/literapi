@@ -1,32 +1,47 @@
-{ "name": "literapi"
-, "version": "0.2.1"
-, "description": "Literate testing for HTTP APIs using markdown"
-, "keywords": ["testing", "test", "api", "rest", "http", "documentation", "docs", "literate"]
-, "homepage": "https://github.com/agnoster/literapi"
-, "author": "Isaac Wolkerstorfer <agnoster@gmail.com>"
-, "main": "./lib/index.js"
-, "repository":
-  { "type": "git"
-  , "url": "git://github.com/agnoster/literapi.git"
-  }
-, "bin":
-  { "literapi": "./bin/literapi"
-  }
-, "preferGlobal": true
-, "scripts":
-  { "test": "node test/example.js"
-  }
-, "dependencies":
-  { "vows": "~0.6"
-  , "request": "~2.10"
-  , "markdownstream": "0.0.2"
-  , "jsonexp": "~0.0.1"
-  }
-, "devDependencies":
-  { "express": "~3.0"
-  }
-, "engines":
-  { "node": ">0.6.0"
-  , "npm":  "1.1.x"
+{
+  "name": "literapi",
+  "version": "0.3.0",
+  "description": "Literate testing for HTTP APIs using markdown",
+  "keywords": [
+    "testing",
+    "test",
+    "api",
+    "rest",
+    "http",
+    "documentation",
+    "docs",
+    "literate"
+  ],
+  "homepage": "https://github.com/agnoster/literapi",
+  "author": "Isaac Wolkerstorfer <agnoster@gmail.com>",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/agnoster/literapi.git"
+  },
+  "bin": {
+    "literapi": "./bin/literapi"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "test": "make tap"
+  },
+  "dependencies": {
+    "mocha": "~1.6.0",
+    "request": "~2.10",
+    "markdownstream": "0.0.2",
+    "jsonexp": "0.0.3",
+    "debug": "~0.7.0",
+    "async": "~0.1.22",
+    "underscore": "~1.4.2"
+  },
+  "devDependencies": {
+    "express": "~3.0",
+    "should": "~1.2.0",
+    "gently": "~0.9.2"
+  },
+  "engines": {
+    "node": ">0.6.0",
+    "npm": "1.1.x"
   }
 }

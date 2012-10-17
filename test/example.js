@@ -1,20 +1,16 @@
 var server = require('./example/server')
-  , LiterAPI = require('../lib')
+  , literapi = require('../lib')
 
-var port = 74123
-
-var api = new LiterAPI(
-  { root: "http://localhost:" + port
-  , compiler: "vows"
-  , parser: "markdown"
-  })
+var port = 74000 + Math.floor(Math.random() * 1000)
 
 server.listen(port)
-api.compileFile('test/example/README.md', function(err, vows) {
-    if (err) throw(err)
 
-    vows.reporter = require('vows/lib/vows/reporters/spec')
-    vows.run(null, function(results) {
-        server.close()
-    })
-})
+console.log('listing on port', port)
+
+setTimeout(function(){
+  literapi.withDefaultPlugins({ root: "http://localhost:" + port })
+    .runWithFiles(['test/example/README.md'], function(err) {
+      server.close()
+      if (err) throw err
+  })
+}, 1000)
