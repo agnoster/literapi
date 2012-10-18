@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1
+
+* FIXED: Default reporters were incorrectly cased, making them impossible to lookup
+
+## 0.3.0
+
+* Major rewrite internally
+
 ## 0.2.1
 
 * Fix bug where process wouldn't exit correctly
