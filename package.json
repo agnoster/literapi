@@ -29,12 +29,13 @@
   "dependencies": {
     "mocha": "~1.6.0",
     "request": "~2.10",
-    "markdownstream": "0.0.2",
+    "markdownstream": "0.0.3",
     "jsonexp": "0.0.3",
     "debug": "~0.7.0",
     "async": "~0.1.22",
     "underscore": "~1.4.2",
-    "optimist": "~0.3.5"
+    "optimist": "~0.3.5",
+    "hacktrace": "0.0.0"
   },
   "devDependencies": {
     "express": "~3.0",
